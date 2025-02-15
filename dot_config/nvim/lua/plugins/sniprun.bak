@@ -1,0 +1,11 @@
+        , {
+            "michaelb/sniprun", -- run arbitrary code, more or less
+            run = "bash ./install.sh",
+            config = get_config("sniprun")
+        } vim.keymap.set('v', '<leader>r', '<Plug>SnipRun', { silent = true })
+vim.keymap.set('n', '<leader>r', '<Plug>SnipRunOperator', { silent = true })
+vim.keymap.set('n', '<leader>rr', '<Plug>SnipRun', { silent = true })
+require('sniprun').setup({
+    selected_interpreters = { 'Python3_fifo' },
+    repl_enable = { 'Python3_fifo' },
+})
