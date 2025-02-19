@@ -1,9 +1,9 @@
 local servers = {
     "lua_ls",
-    "solargraph",
     "bashls",
-    "dockerls",
-    "marksman", -- grammar/spell checking
+    "docker-compose-language-service",
+    "dockerfile-language-server",
+    "powershell-editor-services",
     "texlab",   -- latex syntax
     "vimls",
     "html",
@@ -11,11 +11,7 @@ local servers = {
     "clangd",
     "yamlls",
     "pylsp",
-    "ansiblels",
-    "r_language_server",
-    "beancount",
-    "rnix",
-    -- "ltex"
+    "r_language_server"
 }
 
 require("mason").setup()
