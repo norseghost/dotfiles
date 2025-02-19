@@ -1,15 +1,4 @@
 return {
-    "yorik1984/jekyll.nvim",
-    {
-        dir = "~/Dev/nvimwordlist/",
-        build = function()
-            require("nvimwordlist").update_spell_file()
-        end,
-        config = function()
-            vim.opt.spelllang:append("vim")
-        end,
-        event = "VeryLazy"
-    },
     {
         "norseghost/vim-dirtytalk",
         build  = ":DirtytalkUpdate",
