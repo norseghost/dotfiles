@@ -164,7 +164,7 @@ return {
         -- event = 'VimEnter', -- if you want lazy load, see below
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            preset = "tab_only"
+            preset = "active_wins_at_tail"
         end,
     },
     { -- status line
