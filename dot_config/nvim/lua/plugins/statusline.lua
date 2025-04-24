@@ -90,7 +90,8 @@ local filename = {
         modified = " ⚡", -- Text to show when the file is modified.
         readonly = " ", -- Text to show when the file is non-modifiable or read only.
         unnamed = " ", -- Text to show for unnamed buffers.
-    }
+    },
+    path = 4,
 }
 
 -- cool function for progress
