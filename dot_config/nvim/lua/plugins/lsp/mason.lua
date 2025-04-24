@@ -1,16 +1,19 @@
 local servers = {
     "lua_ls",
     "bashls",
-    "docker-compose-language-service",
-    "dockerfile-language-server",
-    "powershell-editor-services",
-    "texlab",   -- latex syntax
+    "docker_compose_language_service",
+    "dockerls",
+    "powershell_es",
+    "texlab", -- latex syntax
     "vimls",
     "html",
     "jsonls",
     "clangd",
     "yamlls",
     "pylsp",
+    "prosemd_lsp",
+    "nginx_language_server",
+    "typos_lsp",
     "r_language_server"
 }
 
