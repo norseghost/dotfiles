@@ -205,7 +205,7 @@ return {
 
         },
         keys = {
-            { "<leader>gg", "<cmd>Neogit",            "Neogit Status" },
+            { "<leader>gg", "<cmd>Neogit <cr>",            "Neogit Status" },
             { "<leader>gc", "<cmd>Neogit commit<cr>", "Neogit Commit" },
 
         }
