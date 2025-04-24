@@ -191,7 +191,7 @@ return {
         },
         config = {
             commit_editor = {
-                kind = "split",
+                kind = "auto",
                 show_staged_diff = true,
                 -- Accepted values:
                 -- "split" to show the staged diff below the commit editor
@@ -205,7 +205,7 @@ return {
 
         },
         keys = {
-            { "<leader>gg", "<cmd>Neogit <cr>",            "Neogit Status" },
+            { "<leader>gg", "<cmd>Neogit <cr>",       "Neogit Status" },
             { "<leader>gc", "<cmd>Neogit commit<cr>", "Neogit Commit" },
 
         }
