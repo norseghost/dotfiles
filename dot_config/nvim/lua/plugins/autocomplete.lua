@@ -21,7 +21,7 @@ local cmp = {
         --         }
         --     end,
         --     requires = { "kkharji/sqlite.lua" },
-        -- },
+        -- },sync.lua:142: attempt to get length of local 'prev_line' (a nil value)
         -- "jc-doyle/cmp-pandoc-references", -- pandoc bibliography and references completion
         {
             "aspeddro/cmp-pandoc.nvim", -- pandoc completions (crossref, bibliography)
@@ -192,4 +192,4 @@ local cmp = {
 }
 
 -- return cmp
-return cmp
+--   return cmp
