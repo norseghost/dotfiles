@@ -12,17 +12,10 @@ return {
         local group = vim.api.nvim_create_augroup("PersistedHooks", {})
 
         vim.api.nvim_create_autocmd({ "User" }, {
-            pattern = "PersistedSavePre",
-            group = group,
-            callback = function()
-                vim.cmd("bw fugitive Trouble")
-            end,
-        })
-        vim.api.nvim_create_autocmd({ "User" }, {
             pattern = "PersistedLoadPre",
             group = group,
             callback = function()
-                vim.lsp.stop_client(vim.lsp.get_active_clients())
+                vim.lsp.stop_client(vim.lsp.get_clients())
                 vim.cmd("edit")
             end,
         })
