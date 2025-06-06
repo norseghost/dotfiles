@@ -190,7 +190,7 @@ return {
                 lualine_b = { branch, workspace_diagnostics },
                 lualine_c = { filename },
                 -- lualine_x = { "encoding", "fileformat", "filetype" },
-                lualine_x = { diff, persisting, debug, filetype },
+                lualine_x = { diff, filetype },
                 lualine_y = { spaces, linewrap },
                 lualine_z = { location, progress },
             },
@@ -205,8 +205,8 @@ return {
             tabline = {
                 lualine_a = { "tabs" },
                 lualine_b = { "windows" },
-                -- lualine_c = {},
-                -- lualine_x = {},
+                lualine_c = {},
+                lualine_x = {},
                 lualine_y = {},
                 lualine_z = {}
             },
@@ -235,8 +235,6 @@ return {
             },
             extensions = {
                 "quickfix",
-                "fugitive",
-                "nvim-dap-ui"
             },
         }
     }
