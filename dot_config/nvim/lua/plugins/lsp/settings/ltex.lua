@@ -11,6 +11,7 @@ local opts = {
             language = "da-DK",
             dictionary = {
                 ["da-DK"] = words_da,
+
             }
         },
     },

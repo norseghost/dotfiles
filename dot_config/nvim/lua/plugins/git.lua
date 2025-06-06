@@ -1,9 +1,3 @@
-local function refresh_fugitive()
-    local current_window = vim.api.nvim_get_current_win()
-    vim.cmd [[ windo if &ft == 'fugitive' | :edit | end ]]
-    vim.api.nvim_set_current_win(current_window)
-end
-
 return {
     {
         "lewis6991/gitsigns.nvim", -- git signcolumn integration
@@ -128,58 +122,6 @@ return {
             end
         }
     },
-    -- {
-    --     "tpope/vim-fugitive", -- git integration
-    --     event = "BufReadPre",
-    --     config = function()
-    --         vim.keymap.set("n", "<leader>gg", "<cmd>vertical :topleft :Git | :vertical :resize 30<cr>",
-    --             { desc = "Show git summary" })
-    --         vim.keymap.set("n", "<leader>gc",
-    --             function()
-    --                 local ui = vim.api.nvim_list_uis()[1]
-    --                 local width = 90
-    --                 local height = 60
-    --                 vim.cmd.Git("commit -v -q")
-    --                 vim.api.nvim_win_set_config(0,
-    --                     {
-    --                         relative = "editor",
-    --                         width = width,
-    --                         height = height,
-    --                         col = (ui.width / 2) - (width / 2),
-    --                         row = (ui.height / 2) - (height / 2),
-    --                         style = "minimal",
-    --                         border = "rounded"
-    --                     })
-    --                 vim.wo.spell = true
-    --             end,
-    --             { desc = "Commit buffer" }
-    --         )
-    --         local group = vim.api.nvim_create_augroup("git", {})
-    --         vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    --             pattern = { "*COMMIT" },
-    --             command = "startinsert",
-    --             group = group
-    --         })
-    --         vim.api.nvim_create_autocmd({ "FileType" }, {
-    --             pattern = { "fugitive" },
-    --             -- callback = function()
-    --             --     vim.wo.number = false
-    --             --     vim.wo.relativenumber = false
-    --             --     vim.wo.signcolumn = false
-    --             -- end,
-    --             command = "set signcolumn=auto norelativenumber nonumber",
-    --             group = group
-    --         })
-    --         vim.cmd([[
-    --             augroup turbo_commit
-    --             autocmd!
-    --             autocmd BufEnter *COMMIT* startinsert
-    --             autocmd FileType fugitive set signcolumn=auto norelativenumber nonumber
-    --             augroup END
-    --         ]]
-    --         )
-    --     end
-    -- }
     {
         "NeogitOrg/neogit",
         dependencies = {

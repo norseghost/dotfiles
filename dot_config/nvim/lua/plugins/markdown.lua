@@ -60,14 +60,14 @@ let g:vim_markdown_json_frontmatter = 1
     --         "markdown", "rmd", "md"
     --     }
     -- },
-    {
-        "jubnzv/mdeval.nvim",
-        config = function()
-            require("mdeval").setup(
-            )
-        end,
-        keys = {
-            { "<leader>mc", "<cmd>lua require 'mdeval'.eval_code_block()<CR>", desc = "Evaluate Code" },
-        },
-    }
+    -- {
+    --     "jubnzv/mdeval.nvim",
+    --     config = function()
+    --         require("mdeval").setup(
+    --         )
+    --     end,
+    --     keys = {
+    --         { "<leader>mc", "<cmd>lua require 'mdeval'.eval_code_block()<CR>", desc = "Evaluate Code" },
+    --     },
+    -- }
 }

@@ -42,8 +42,8 @@ return {
     --     "stevearc/dressing.nvim", -- prettify ui wrapper
     --     event = "VeryLazy"
     -- },
-    {
-        "kevinhwang91/nvim-bqf",
-        ft = "qf",
-    },
+    -- {
+    --     "kevinhwang91/nvim-bqf",
+    --     ft = "qf,
+    -- },
 }

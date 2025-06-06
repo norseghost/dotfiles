@@ -1,4 +1,4 @@
-return {
+local debug = {
     {
         "mfussenegger/nvim-dap", -- debug adapter protocol
         dependencies = {
@@ -146,3 +146,5 @@ return {
     },
 
 }
+
+return {}

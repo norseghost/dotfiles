@@ -82,9 +82,11 @@ o.spelloptions = "noplainbuffer"
 -- folds
 o.foldenable = true   -- allow code to be folded
 o.foldlevelstart = 99 -- start unfolded
+o.foldmethod = "expr" -- use tree-sitter for folding method
+o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- tabs
-o.tabstop = 4         -- <tab> counts for 4 spaces
-o.shiftwidth = 4      -- number of spaces for (auto)indent
+o.tabstop = 4    -- <tab> counts for 4 spaces
+o.shiftwidth = 4 -- number of spaces for (auto)indent
 o.expandtab = true
 -- formatting
 o.autoindent = true -- copy indent from previous line
@@ -121,9 +123,10 @@ o.incsearch = true         -- show matches in realtime
 o.hlsearch = true          -- highlight search results
 -- completion
 o.completeopt = {
-    "menu",     -- show completion menu
-    "menuone",  -- even if there is only one match
-    "noselect", -- don't preselect
+    "menu",    -- show completion menu
+    "menuone", -- even if there is only one match
+    "popup",   -- popup window
+    "fuzzy",   -- enable fuzzy search
 }
 -- text wrapping
 o.wrap = false       -- wrap lines by default
@@ -148,3 +151,11 @@ if vim.fn.executable("rg") == 1 then
     o.grepprg = "rg --vimgrep -H --no-heading --column --smart-case -P"
     o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end
+--- diagnostics ---
+vim.diagnostics.config({
+    virtual_text = true,
+    -- current_line = true,
+    virtual_lines = {
+        current_line = true,
+    },
+});

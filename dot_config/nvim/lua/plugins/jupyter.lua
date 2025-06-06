@@ -1,4 +1,4 @@
-return {
+local jupyter = {
     {
         "GCBallesteros/NotebookNavigator.nvim",
         keys = {
@@ -100,3 +100,5 @@ return {
         }
     },
 }
+
+return {}

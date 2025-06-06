@@ -1,4 +1,4 @@
-return {
+local coding = {
     {
         "Exafunction/codeium.vim",
         event = "BufEnter"
@@ -85,3 +85,4 @@ return {
     { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 
 }
+return {}

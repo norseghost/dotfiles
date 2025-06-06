@@ -5,4 +5,5 @@ vim.loader.enable()
 require "options"
 require "autocmds"
 require "mappings"
+require "lsp"
 require "pluginmanager"
