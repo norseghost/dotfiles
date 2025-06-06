@@ -1,4 +1,4 @@
-return {
+local test = {
     "nvim-neotest/neotest",
     event = "BufEnter test*.*",
     dependencies = {
@@ -83,3 +83,4 @@ return {
     --
     -- }
 }
+return {}

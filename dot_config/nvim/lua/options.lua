@@ -151,11 +151,26 @@ if vim.fn.executable("rg") == 1 then
     o.grepprg = "rg --vimgrep -H --no-heading --column --smart-case -P"
     o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end
---- diagnostics ---
+
+--- diagnostics
+local signs = {
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+}
+
+for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
 vim.diagnostic.config({
     virtual_text = true,
-    -- current_line = true,
+    current_line = true,
     virtual_lines = {
         current_line = true,
+    },
+    signs = {
+        active = signs,
     },
 });

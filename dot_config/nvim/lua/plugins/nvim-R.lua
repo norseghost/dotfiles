@@ -24,3 +24,4 @@
 --         --vim.g.R_path = '/path/to/my/preferred/R/version/bin'
 --     end
 -- }
+return {}

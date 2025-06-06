@@ -47,27 +47,27 @@ local mode = {
     end,
 }
 
-local navic = function()
-    local status_navic_ok, navic = pcall(require, "nvim-navic")
-    if not status_navic_ok then
-        return
-    end
-
-    return navic.get_location({ highlight = false })
-end
+-- local navic = function()
+--     local status_navic_ok, navic = pcall(require, "nvim-navic")
+--     if not status_navic_ok then
+--         return
+--     end
+--
+--     return navic.get_location({ highlight = false })
+-- end
 
 local filetype = {
     "filetype",
     colored = false,
     icon_only = false
 }
-
-local debug = function()
-    local dap = require("dap")
-    if dap.status() ~= nil then
-        return dap.status()
-    end
-end
+--
+-- local debug = function()
+--     local dap = require("day")
+--     if day.status() ~= nil then
+--         return day.status()
+--     end
+-- end
 
 local persisting = function()
     if vim.g.persisting then
@@ -132,7 +132,7 @@ local buffers = {
         packer = "Packer",
         fzf = "FZF",
         alpha = "Alpha"
-    }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
+    }, -- Shows specific buffer name for that file type ( { `file type` = `buffer_name`, ... } )
 
     buffers_color = {
         -- Same values as the general color option can be used here.
@@ -155,18 +155,18 @@ local function linewrap()
 end
 
 local spaces = function()
-    return vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return vim.bo.shiftwidth()
 end
 
 return {
-    {
-        "nanozuki/tabby.nvim",
-        -- event = 'VimEnter', -- if you want lazy load, see below
-        dependencies = "nvim-tree/nvim-web-devicons",
-        config = function()
-            preset = "active_wins_at_tail"
-        end,
-    },
+    -- {
+    --     "nanozuki/tabby.nvim",
+    --     -- event = 'VimEnter', -- if you want lazy load, see below
+    --     dependencies = "nvim-tree/nvim-web-devicons",
+    --     config = function()
+    --         preset = "active_wins_at_tail"
+    --     end,
+    -- },
     { -- status line
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
@@ -219,7 +219,6 @@ return {
                 },
                 lualine_c = {
                     filename,
-                    navic
                 },
                 lualine_x = {},
                 lualine_y = { spelling },
@@ -243,27 +242,5 @@ return {
                 "nvim-dap-ui"
             },
         }
-    },
-    {
-        "luukvbaal/statuscol.nvim",
-        config = function()
-            -- local builtin = require("statuscol.builtin")
-            require("statuscol").setup({
-                -- configuration goes here, for example:
-                -- relculright = true,
-                -- segments = {
-                --   { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-                --   {
-                --     sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },
-                --     click = "v:lua.ScSa"
-                --   },
-                --   { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
-                --   {
-                --     sign = { name = { ".*" }, maxwidth = 2, colwidth = 1, auto = true },
-                --     click = "v:lua.ScSa"
-                --   },
-                -- }
-            })
-        end
     }
 }
