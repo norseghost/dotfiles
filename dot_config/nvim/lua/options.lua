@@ -152,7 +152,7 @@ if vim.fn.executable("rg") == 1 then
     o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end
 --- diagnostics ---
-vim.diagnostics.config({
+vim.diagnostic.config({
     virtual_text = true,
     -- current_line = true,
     virtual_lines = {
