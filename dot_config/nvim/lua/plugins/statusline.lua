@@ -177,9 +177,6 @@ return {
                 -- component_separators = { left = "", right = "" },
                 -- section_separators = { left = "", right = "" },
                 disabled_filetypes = {
-                    "alpha",
-                    "dashboard",
-                    "NvimTree",
                     "Outline",
                     "Trouble",
                     statusline = {},
@@ -205,14 +202,14 @@ return {
                 lualine_y = {},
                 lualine_z = {},
             },
-            -- tabline = {
-            --     lualine_a = { "tabs" },
-            --     lualine_b = { "windows" },
-            --     -- lualine_c = {},
-            --     -- lualine_x = {},
-            --     lualine_y = {},
-            --     lualine_z = {}
-            -- },
+            tabline = {
+                lualine_a = { "tabs" },
+                lualine_b = { "windows" },
+                -- lualine_c = {},
+                -- lualine_x = {},
+                lualine_y = {},
+                lualine_z = {}
+            },
             winbar = {
                 lualine_b = {
                     diagnostics
