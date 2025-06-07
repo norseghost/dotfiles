@@ -152,24 +152,3 @@ if vim.fn.executable("rg") == 1 then
     o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end
 
---- diagnostics
-local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    -- vim.diagnostic.config(hl, { text = icon, texthl = hl, numhl = "" })
-    vim.diagnostic.config({
-        signs = {
-            text = icon,
-            linehl = hl,
-            numhl = "",
-        },
-    })
-end
-
-vim.diagnostic.config({
-    virtual_text = true,
-    current_line = true,
-    virtual_lines = {
-        current_line = true,
-    },
-});
