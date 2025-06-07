@@ -48,16 +48,7 @@ end
 
 vim.lsp.handlers["textDocument/hover"] = hover_preview
 M.setup = function()
-    local signs = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-    }
 
-    for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    end
 
     local config = {
         -- disable virtual text
@@ -146,29 +137,6 @@ local autoformat = function(client, bufnr)
         })
     end
 end
-local function lsp_highlight_document(client, bufnr)
-    -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.documentHighlightProvider then
-        --[[ if client.supports_method("textDocument/documentHighlight") then ]]
-        vim.api.nvim_create_augroup("lsp_document_highlight", {
-            clear = false
-        })
-        vim.api.nvim_clear_autocmds({
-            buffer = bufnr,
-            group = "lsp_document_highlight",
-        })
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-            group = "lsp_document_highlight",
-            buffer = bufnr,
-            callback = vim.lsp.buf.document_highlight,
-        })
-        vim.api.nvim_create_autocmd("CursorMoved", {
-            group = "lsp_document_highlight",
-            buffer = bufnr,
-            callback = vim.lsp.buf.clear_references,
-        })
-    end
-end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -187,15 +155,12 @@ M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        local bufnr = args.buf
         if client.server_capabilities.inlayHintProvider then
             vim.lsp.inlay_hint.enable(true)
         end
         lsp_keymaps(client, bufnr)
         require("lsp-format").on_attach(client)
         lsp_highlight_document(client, bufnr)
-
         if client.server_capabilities.documentSymbolProvider then
             require("nvim-navic").attach(client, bufnr)
         end

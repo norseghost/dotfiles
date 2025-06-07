@@ -153,15 +153,17 @@ if vim.fn.executable("rg") == 1 then
 end
 
 --- diagnostics
-local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-}
-
-for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    -- vim.diagnostic.config(hl, { text = icon, texthl = hl, numhl = "" })
+    vim.diagnostic.config({
+        signs = {
+            text = icon,
+            linehl = hl,
+            numhl = "",
+        },
+    })
 end
 
 vim.diagnostic.config({
@@ -169,8 +171,5 @@ vim.diagnostic.config({
     current_line = true,
     virtual_lines = {
         current_line = true,
-    },
-    signs = {
-        active = signs,
     },
 });
