@@ -47,14 +47,28 @@ local mode = {
     end,
 }
 
--- local navic = function()
---     local status_navic_ok, navic = pcall(require, "nvim-navic")
---     if not status_navic_ok then
---         return
---     end
---
---     return navic.get_location({ highlight = false })
--- end
+local nav = function()
+    local ts_nav = require("nvim-treesitter").statusline({
+        separator = "  ",
+        type_patterns = {
+            "class",
+            "function",
+            "method",
+            "import",
+            "for",
+            "if",
+            "while",
+            "variable",
+            "comment",
+        },
+
+    })
+    if ts_nav == nil then
+        return
+    else
+        return ts_nav
+    end
+end
 
 local filetype = {
     "filetype",
@@ -211,13 +225,15 @@ return {
                 lualine_z = {}
             },
             winbar = {
-                lualine_b = {
-                    diagnostics
-                },
-                lualine_c = {
+                lualine_a = {
                     filename,
                 },
-                lualine_x = {},
+                lualine_b = {
+                    nav,
+                },
+                lualine_c = {
+                },
+                lualine_x = { diagnostics },
                 lualine_y = { spelling },
                 lualine_z = { "searchcount" }
             },
