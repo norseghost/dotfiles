@@ -127,6 +127,7 @@ o.completeopt = {
     "menuone", -- even if there is only one match
     "popup",   -- popup window
     "fuzzy",   -- enable fuzzy search
+    "noselect" -- don't autoselect words
 }
 -- text wrapping
 o.wrap = false       -- wrap lines by default
