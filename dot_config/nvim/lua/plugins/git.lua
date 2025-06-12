@@ -133,7 +133,7 @@ return {
         },
         config = {
             commit_editor = {
-                kind = "auto",
+                kind = "floating",
                 show_staged_diff = true,
                 -- Accepted values:
                 -- "split" to show the staged diff below the commit editor
