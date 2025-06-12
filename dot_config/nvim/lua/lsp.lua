@@ -1,4 +1,3 @@
--- enable  
 local function lsp_highlight_document(client, bufnr)
     -- Set autocommands conditional on server_capabilities
     if client.server_capabilities.documentHighlightProvider then
@@ -30,7 +29,7 @@ local lsp_autoformat = function(client, bufnr)
             callback = function()
                 vim.lsp.buf.format({ bufnr = bufnr })
             end,
-            group = g,
+
             desc = "LSP format on save"
         })
     end
@@ -52,4 +51,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- enable configured language servers
 -- you can find server configurations from lsp/*.lua files
-vim.lsp.enable('lua_ls')
+vim.lsp.enable("lua_ls")
