@@ -171,14 +171,6 @@ local spaces = function()
 end
 
 return {
-    -- {
-    --     "nanozuki/tabby.nvim",
-    --     -- event = 'VimEnter', -- if you want lazy load, see below
-    --     dependencies = "nvim-tree/nvim-web-devicons",
-    --     config = function()
-    --         preset = "active_wins_at_tail"
-    --     end,
-    -- },
     { -- status line
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
@@ -197,6 +189,11 @@ return {
                 always_divide_middle = true,
                 globalstatus = true,
             },
+            extensions = {
+                "quickfix",
+                "trouble",
+                "lazy"
+            },
             sections = {
                 lualine_a = { mode },
                 lualine_b = { branch, workspace_diagnostics },
@@ -207,45 +204,37 @@ return {
                 lualine_z = { location, progress },
             },
             inactive_sections = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {},
+                -- lualine_a = {},
+                -- lualine_b = {},
+                -- lualine_c = {},
                 lualine_x = { location },
-                lualine_y = {},
-                lualine_z = {},
+                -- lualine_y = {},
+                -- lualine_z = {},
             },
             tabline = {
                 lualine_a = { "tabs" },
                 lualine_b = { "windows" },
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {}
+                -- lualine_c = {},
+                -- lualine_x = {},
+                -- lualine_y = {},
+                -- lualine_z = {}
             },
             winbar = {
-                lualine_a = {
-                },
-                lualine_b = {
-                    filename,
-                },
-                lualine_c = {
-                    nav,
-                },
-                inactive_winbar = {
-                    lualine_a = {},
-                    lualine_b = { {
-                        "filename",
-                        file_status = true
-                    } },
-                    lualine_c = {},
-                    lualine_x = {},
-                    lualine_y = {},
-                    lualine_z = {}
-                },
-                extensions = {
-                    "quickfix",
-                },
-            }
+                -- lualine_a = {},
+                lualine_b = { filename },
+                lualine_c = { nav },
+                -- lualine_x = {},
+                -- lualine_y = {},
+                -- lualine_z = {}
+            },
+            inactive_winbar = {
+                -- lualine_a = {},
+                lualine_b = { filename },
+                -- lualine_c = {},
+                -- lualine_x = {},
+                -- lualine_y = {},
+                -- lualine_z = {}
+            },
         }
     }
 }
