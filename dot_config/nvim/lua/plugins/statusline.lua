@@ -231,25 +231,21 @@ return {
                 lualine_c = {
                     nav,
                 },
-                lualine_x = { diagnostics },
-                lualine_y = { spelling },
-                lualine_z = { "searchcount" }
-            },
-
-            inactive_winbar = {
-                lualine_a = {},
-                lualine_b = { {
-                    "filename",
-                    file_status = true
-                } },
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {}
-            },
-            extensions = {
-                "quickfix",
-            },
+                inactive_winbar = {
+                    lualine_a = {},
+                    lualine_b = { {
+                        "filename",
+                        file_status = true
+                    } },
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = {},
+                    lualine_z = {}
+                },
+                extensions = {
+                    "quickfix",
+                },
+            }
         }
     }
 }
