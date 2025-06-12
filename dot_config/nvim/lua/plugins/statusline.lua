@@ -63,8 +63,13 @@ local nav = function()
         },
 
     })
-    if ts_nav then
+    local buf = vim.api.nvim_get_current_buf()
+    local highlighter = require "vim.treesitter.highlighter"
+    if highlighter.active[buf] then
+        -- treesitter highlighting is enabled
         return ts_nav
+    else
+        return ""
     end
 end
 
