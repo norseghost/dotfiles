@@ -51,4 +51,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- enable configured language servers
 -- you can find server configurations from lsp/*.lua files
-vim.lsp.enable("lua_ls")
+vim.lsp.enable({
+    "lua_ls",
+    "bashls.lua",
+    "basics_ls.lua",
+    "clangd.lua",
+    "docker_compose_language_service.lua",
+    "marksman.lua",
+    "openscad_lsp.lua",
+    "pylsp.lua",
+})

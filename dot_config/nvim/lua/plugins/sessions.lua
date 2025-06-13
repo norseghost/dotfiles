@@ -1,6 +1,4 @@
 return {
-    -- TODO: better, more automated session handling
-    --       and also better setup code
     "olimorris/persisted.nvim",
     event = "VeryLazy",
     config = function()
