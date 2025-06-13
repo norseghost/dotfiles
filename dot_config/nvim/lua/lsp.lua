@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        lsp_autoformat(client, ev.buf)
+        -- lsp_autoformat(client, ev.buf)
         lsp_highlight_document(client, ev.buf)
         -- enable lsp completion
         vim.lsp.completion.enable(
