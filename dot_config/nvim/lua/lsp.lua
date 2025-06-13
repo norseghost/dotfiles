@@ -23,14 +23,14 @@ local function lsp_highlight_document(client, bufnr)
 end
 local lsp_autoformat = function(client, bufnr)
     if client.server_capabilities.documentFormattingProvider then
-        local g = vim.api.nvim_create_augroup("LspFormatting", {})
+        local group = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
         vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = "*",
+            group = group,
+            buffer = bufnr,
             callback = function()
                 vim.lsp.buf.format({ bufnr = bufnr })
             end,
-
-            desc = "LSP format on save"
+            desc = "LSP format on save",
         })
     end
 end
@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        -- lsp_autoformat(client, ev.buf)
+        lsp_autoformat(client, ev.buf)
         lsp_highlight_document(client, ev.buf)
         -- enable lsp completion
         vim.lsp.completion.enable(
