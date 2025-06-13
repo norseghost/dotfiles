@@ -26,7 +26,7 @@ return {
                 delay = 1000,
                 ignore_whitespace = false,
             },
-            sign_priority = 6,
+            sign_priority = 0,
             update_debounce = 100,
             status_formatter = nil, -- Use default
             max_file_length = 40000,
