@@ -8,6 +8,26 @@ return {
             -- refer to the configuration section below
         },
         zen = {
+            on_open = function()
+                -- Call your PowerShell profile function directly
+                local result = vim.fn.systemlist({
+                    "pwsh", "-NoLogo", "-Command",
+                    "Set-WTFontSize 16 | ConvertTo-Json -Compress"
+                })
+                local ok, parsed = pcall(vim.json.decode, table.concat(result, ""))
+                if ok and parsed and parsed.Old then
+                    old_font_size = parsed.Old
+                end
+            end,
+
+            on_close = function()
+                if old_font_size then
+                    vim.fn.system({
+                        "pwsh", "-NoLogo", "-Command",
+                        "Set-WTFontSize " .. tostring(old_font_size)
+                    })
+                end
+            end,
 
         },
         statuscolumn = {
