@@ -1,3 +1,4 @@
+local old_font_size
 return {
     "folke/snacks.nvim",
     ---@type snacks.Config
@@ -10,13 +11,16 @@ return {
         zen = {
             on_open = function()
                 -- Call your PowerShell profile function directly
-                local result = vim.fn.systemlist({
+                local result = vim.fn.system({
                     "pwsh", "-NoLogo", "-Command",
-                    "Set-WTFontSize 16 | ConvertTo-Json -Compress"
+                    "Set-WTFontSize 16 2>$null | ConvertTo-Json -Compress"
                 })
                 local ok, parsed = pcall(vim.json.decode, table.concat(result, ""))
                 if ok and parsed and parsed.Old then
                     old_font_size = parsed.Old
+                    vim.notify("Saved old font size: " .. old_font_size)
+                else
+                    vim.notify("Failed to parse old font size", vim.log.levels.WARN)
                 end
             end,
 
@@ -24,8 +28,11 @@ return {
                 if old_font_size then
                     vim.fn.system({
                         "pwsh", "-NoLogo", "-Command",
-                        "Set-WTFontSize " .. tostring(old_font_size)
+                        "Set-WTFontSize " .. old_font_size
                     })
+                    vim.notify("Restored font size: " .. old_font_size)
+                else
+                    vim.notify("No saved font size", vim.log.levels.WARN)
                 end
             end,
 
