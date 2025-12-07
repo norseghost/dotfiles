@@ -1,0 +1,14 @@
+# vim line editing mode
+bindkey -v
+
+# completions
+zstyle :compinstall filename '/home/martin/.zshrc'
+zstyle ':completion::complete:*' gain-privileges 1
+zstyle ':completion:*' menu select
+autoload -Uz compinit
+compinit
+autoload -Uz add-zsh-hook
+
+for file in $ZDOTDIR/zshrc.d/*; do
+    source "$file"
+done
