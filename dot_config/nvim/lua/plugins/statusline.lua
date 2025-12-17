@@ -108,7 +108,7 @@ local filename = {
         readonly = " ", -- Text to show when the file is non-modifiable or read only.
         unnamed = " ", -- Text to show for unnamed buffers.
     },
-    path = 4,
+    path = 1,
 }
 
 -- cool function for progress
