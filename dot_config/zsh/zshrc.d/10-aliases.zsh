@@ -1,0 +1,10 @@
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# Default to human readable figures
+alias df='df -h'
+alias du='du -h'
+alias ls='ls -hF --color=tty --group-directories-first'           
+alias dir='ls --color=auto --format=vertical'
+alias vdir='ls --color=auto --format=long'
+alias ll='ls -l'                              
+alias la='ls -A'        
+alias l='ls -CF'

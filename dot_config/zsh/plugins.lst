@@ -1,0 +1,16 @@
+
+willghatch/zsh-saneopt
+djui/alias-tips
+MikeDacre/tmux-zsh-vim-titles
+TBSliver/zsh-plugin-tmux-simple
+Tarrasch/zsh-command-not-found
+zsh-users/zsh-completions
+# jump to frecent directories wit z
+ agkozak/zsh-z
+ andrewferrier/fzf-z
+ joepvd/zsh-hints
+ zpm-zsh/ssh
+ le0me55i/zsh-systemd
+ peterhurford/git-aliases.zsh
+ zsh-users/zsh-autosuggestions
+ bigH/git-fuzzy path:bin kind:path

@@ -1,0 +1,9 @@
+HISTFILE=~/.cache/zsh/histfile
+HISTSIZE=10000
+SAVEHIST=10000
+function read_environment() {
+    set -a
+    [ -d $HOME/.config/environment.d ] &&  source <(cat $HOME/.config/environment.d/*)
+    set +a
+}
+read_environment
