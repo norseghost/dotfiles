@@ -39,6 +39,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        -- extend triggerCharacters so completion fires more aggressively
+        if client.server_capabilities.completionProvider then
+            local cp = client.server_capabilities.completionProvider
+            cp.triggerCharacters = cp.triggerCharacters or {}
+            -- add any characters you want to trigger on; empty string fires on every key
+            vim.list_extend(cp.triggerCharacters, { ".", ":", "-", " " })
+        end
         lsp_autoformat(client, ev.buf)
         lsp_highlight_document(client, ev.buf)
         -- enable lsp completion
