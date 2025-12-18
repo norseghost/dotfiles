@@ -58,9 +58,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.set_log_level("DEBUG")
 -- enable configured language servers
 -- you can find server configurations from lsp/*.lua files
+local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+
+if not is_windows then
+    vim.lsp.enable(
+        "ansible_language_server"
+    )
+end
 vim.lsp.enable({
     "lua_ls",
-    "ansible_language_server",
     "bashls",
     "basics_ls",
     "clangd",
