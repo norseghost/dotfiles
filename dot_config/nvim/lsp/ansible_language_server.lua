@@ -1,5 +1,10 @@
 return {
+<<<<<<< HEAD
+    -- Use wsl.exe to call the server installed in your Linux distro
+    cmd = { "wsl.exe", "bash", "-lc", "ansible-language-server --stdio" },
+=======
     cmd = { "ansible-language-server --stdio" },
+>>>>>>> cf1a8cb3c3247a4644ca7b2456f90e52fbc84520
     -- Ensure the root directory is detected correctly
     settings = {
         root_markers = { "ansible.cfg", ".ansible-lint", "inventory" },
