@@ -1,7 +1,10 @@
 local old_font_size
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+local script = "C:\\Users\\marti\\WinDocs\\Scripts\\setwtfontsize.ps1"
 return {
     "folke/snacks.nvim",
+    lazy = false,
+    priority = 1000,
     ---@type snacks.Config
     opts = {
         dim = {
@@ -11,12 +14,11 @@ return {
         },
         zen = {
             on_open = function()
-                -- Call your PowerShell profile function directly
                 if not is_windows then return end
                 local result = vim.fn.system({
                     "pwsh", "-NoProfile", "-NoLogo",
-                    "-File", "setwtfontsize.ps1",
-                    "16"
+                    "-File", script,
+                    "18"
                 })
                 local ok, parsed = pcall(vim.json.decode, result)
                 if ok and parsed and parsed.Old then
@@ -32,7 +34,7 @@ return {
                 if not old_font_size then return end
                 vim.fn.system({
                     "pwsh", "-NoProfile", "-NoLogo",
-                    "-File", "setwtfontsize.ps1", old_font_size
+                    "-File", script, old_font_size
                 })
                 vim.notify("Restored font size: " .. old_font_size)
             end,
@@ -45,7 +47,7 @@ return {
             -- refer to the configuration section below
         },
         notifier = {
-            enabled = true,
+            enabled = false,
         },
         scroll = { enabled = true },
     },

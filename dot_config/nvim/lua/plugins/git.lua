@@ -132,7 +132,7 @@ return {
             "nvim-telescope/telescope.nvim", -- optional
         },
         graph_style = "unicode",
-        config = {
+        opts = {
             commit_editor = {
                 kind = "floating",
                 show_staged_diff = true,
