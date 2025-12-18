@@ -2,6 +2,8 @@ return {
     cmd = { "ansible-language-server --stdio" },
     -- Ensure the root directory is detected correctly
     settings = {
+        root_markers = { "ansible.cfg", ".ansible-lint", "inventory" },
+        filetypes = { "yaml.ansible" },
         ansible = {
             ansible = {
                 path = "ansible" -- This refers to the 'ansible' command inside WSL
