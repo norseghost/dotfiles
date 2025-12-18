@@ -5,7 +5,7 @@ local ui = vim.api.nvim_create_augroup("ui", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = ui,
     callback = function()
-        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+        vim.hl.on_yank({ higroup = "IncSearch", timeout = 200 })
     end
 })
 -- show cursor line only in active window

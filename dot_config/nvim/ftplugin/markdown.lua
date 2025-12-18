@@ -1,2 +1,2 @@
 vim.opt.formatoptions:remove { "t" }
-vim.opt.wrap = true
+vim.opt.wrap = false
