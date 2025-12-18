@@ -1,5 +1,5 @@
 return {
-    cmd = { "ansible-language-server --stdio" },
+    cmd = { "ansible-language-server", "--stdio" },
     -- Ensure the root directory is detected correctly
     settings = {
         root_markers = { "ansible.cfg", ".ansible-lint", "inventory" },
