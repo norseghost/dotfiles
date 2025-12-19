@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.lsp.set_log_level("DEBUG")
+-- vim.lsp.set_log_level("DEBUG")
 -- enable configured language servers
 -- you can find server configurations from lsp/*.lua files
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
