@@ -25,19 +25,6 @@ return {
     },
 
     {
-        "tadmccorkle/markdown.nvim",
-        ft = "markdown",
-        opts = {
-            on_attach = function(bufnr)
-                local map = vim.keymap.set
-                local opts = { buffer = bufnr }
-                map("n", "<M-l><M-o>", "<cmd>MDListItemBelow<cr>", opts)
-                map("n", "<C-c>", "<cmd>MDTaskToggle<cr>", opts)
-            end,
-        },
-    },
-
-    {
         "jakewvincent/mkdnflow.nvim",
         ft = { "markdown", "md" },
         config = function()
@@ -49,6 +36,7 @@ return {
                 modules = {
                     bib = has_bib,
                     yaml = true,
+                    lists = true,
                 },
                 bib = {
                     default_path = bib_file,
@@ -57,7 +45,7 @@ return {
                 -- Use native-friendly mappings
                 mappings = {
                     MkdnEnter = {{'i', 'n', 'v'}, '<CR>'},
-                    MkdnNextLink = {'n', '<Tab>'},
+                    MkdnNextLink = {'n ', '<Tab>'},
                 }
             })
         end
