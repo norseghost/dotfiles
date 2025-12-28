@@ -1,73 +1,65 @@
 return {
     {
-        "tadmccorkle/markdown.nvim",
-        branch = "master",
-        require = { "godlygeek/tabular" },
-        dependencies = {
-            "vim-pandoc/vim-pandoc-syntax",
-            "vim-pandoc/vim-pandoc",
-            {
-                "ellisonleao/glow.nvim", -- inline preview of rendered markdown
-                keys = { "<leader>mp", "<cmd>Glow<cr>", desc = "Markdown Preview" },
-            }
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ft = { "markdown", "rmd", "pandoc" },
+        opts = {
+            -- Automatically handles frontmatter (YAML/TOML/JSON) visually
+            code = {
+                sign = false,
+                width = "block",
+                right_pad = 1,
+            },
+            heading = {
+                sign = false,
+                icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+            },
         },
-        ft = {
-            "markdown",
-            "md",
-            "rmd",
-            "Rmd",
-            "pandoc"
-        },
-        config = function()
-            vim.cmd([[
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-        ]]
-            )
-        end
     },
-    -- {
-    --     "jakewvincent/mkdnflow.nvim",
-    --     config = function()
-    --         require("mkdnflow").setup({
-    --             modules = {
-    --                 yaml = true,
-    --                 cmp = true,
-    --                 bib = false,
-    --             },
-    --             perspective = {
-    --                 priority = "root",
-    --                 fallback = "current",
-    --                 root_tell = ".git",
-    --                 nvim_wd_heel = false,
-    --                 update = true
-    --             },
-    --             bib = {
-    --                 default_path = "_bibliography/references.bib",
-    --                 find_in_root = true
-    --             },
-    --             yaml = {
-    --                 bib = { override = true }
-    --             },
-    --             mappings = {
-    --                 MkdnFoldSection = { "n", "<leader>tf" },
-    --                 MkdnUnfoldSection = { "n", "<leader>tF" }
-    --             }
-    --         })
-    --     end,
-    --     ft = {
-    --         "markdown", "rmd", "md"
-    --     }
-    -- },
-    -- {
-    --     "jubnzv/mdeval.nvim",
-    --     config = function()
-    --         require("mdeval").setup(
-    --         )
-    --     end,
-    --     keys = {
-    --         { "<leader>mc", "<cmd>lua require 'mdeval'.eval_code_block()<CR>", desc = "Evaluate Code" },
-    --     },
-    -- }
+
+    {
+        "ellisonleao/glow.nvim",
+        cmd = "Glow",
+        config = true,
+        keys = { { "<leader>mp", "<cmd>Glow<cr>", desc = "Markdown Preview" } },
+    },
+
+    {
+        "tadmccorkle/markdown.nvim",
+        ft = "markdown",
+        opts = {
+            on_attach = function(bufnr)
+                local map = vim.keymap.set
+                local opts = { buffer = bufnr }
+                map("n", "<M-l><M-o>", "<cmd>MDListItemBelow<cr>", opts)
+                map("n", "<C-c>", "<cmd>MDTaskToggle<cr>", opts)
+            end,
+        },
+    },
+
+    {
+        "jakewvincent/mkdnflow.nvim",
+        ft = { "markdown", "md" },
+        config = function()
+            local bib_file = "_bibliography/references.bib"
+            -- Only enable bib module if the file actually exists
+            local has_bib = vim.fn.filereadable(vim.fn.getcwd() .. "/" .. bib_file) == 1
+
+            require("mkdnflow").setup({
+                modules = {
+                    bib = has_bib,
+                    yaml = true,
+                },
+                bib = {
+                    default_path = bib_file,
+                    find_in_root = true
+                },
+                -- Use native-friendly mappings
+                mappings = {
+                    MkdnEnter = {{'i', 'n', 'v'}, '<CR>'},
+                    MkdnNextLink = {'n', '<Tab>'},
+                }
+            })
+        end
+    }
 }
