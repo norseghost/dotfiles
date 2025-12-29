@@ -19,13 +19,6 @@ return {
     },
 
     {
-        "ellisonleao/glow.nvim",
-        cmd = "Glow",
-        config = true,
-        keys = { { "<leader>mp", "<cmd>Glow<cr>", desc = "Markdown Preview" } },
-    },
-
-    {
         "jakewvincent/mkdnflow.nvim",
         ft = { "markdown", "md" },
         config = function()
@@ -57,10 +50,10 @@ return {
             on_attach = function(bufnr)
                 local map = vim.keymap.set
                 local opts = { buffer = bufnr }
-                map({ 'n', 'i' }, '<C-CR>', '<Cmd>MDListItemBelow<CR>', opts)
-                map({ 'n', 'i' }, '<M-C-CR>', '<Cmd>MDListItemAbove<CR>', opts)
-                map('n', '<M-c>', '<Cmd>MDTaskToggle<CR>', opts)
-                map('x', '<M-c>', ':MDTaskToggle<CR>', opts)
+                map({ "n", "i" }, "<C-CR>", "<Cmd>MDListItemBelow<CR>", opts)
+                map({ "n", "i" }, "<M-C-CR>", "<Cmd>MDListItemAbove<CR>", opts)
+                map("n", "<M-c>", "<Cmd>MDTaskToggle<CR>", opts)
+                map("x", "<M-c>", ":MDTaskToggle<CR>", opts)
             end,
         },
     }
