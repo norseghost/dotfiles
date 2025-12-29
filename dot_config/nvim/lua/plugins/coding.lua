@@ -1,9 +1,5 @@
 local coding = {
     {
-        "Exafunction/codeium.vim",
-        event = "BufEnter"
-    },
-    {
         "folke/trouble.nvim",
         opts = {
             position = "bottom",
@@ -85,4 +81,4 @@ local coding = {
     { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 
 }
-return {}
+return coding
