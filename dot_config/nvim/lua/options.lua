@@ -90,6 +90,7 @@ o.shiftwidth = 4 -- number of spaces for (auto)indent
 o.expandtab = true
 -- formatting
 o.autoindent = true -- copy indent from previous line
+o.breakindent = true
 o.formatoptions = {
     c = true,       -- auto wrap comments using textwidth
     r = true,       -- <cr> autoinserts current comment leader in insert mode
@@ -97,24 +98,16 @@ o.formatoptions = {
     q = true,       -- format comments with <gq>
     j = true,       -- remove comment leader when joining lines
 }
-o.textwidth = 74
+o.textwidth = 79
 -- lists
---[[ TODO: how to translate vim scoped regexes to lua
-o.formatlistpat = {
-   ['^\s*]                     -- Optional leading whitespace
-   ['[']                        -- Start character class
-   ['\[({]\?']                -- |  Optionally match opening punctuation
-   ['\(']                      -- |  Start group
-   ['[0-9]\+']                 -- |  |  Numbers
-   ['\\|']                     -- |  |  or
-   ['[a-zA-Z]\+']              -- |  |  Letters
-   ['\)']                      -- |  End group
-   ['[\]:.)}']                 -- |  Closing punctuation
-   [']']                        -- End character class
-   ['\s\+']                   -- One or more spaces
-   ['\\|']                     -- or
-   ['^\s*[-–+o*•]\s\+']      -- Bullet points
-} --]]
+-- 1. ^\s* : Start of line + optional whitespace
+-- 2. [[({]?         : Optional opening punctuation
+-- 3. ([0-9]+|[a-zA-Z]+) : Numbers or letters
+-- 4. [\]:.)}]       : Closing punctuation
+-- 5. \s+            : Following whitespace
+-- 6. |              : OR
+-- 7. ^\s*[-–+o*•]\s+ : Standard bullets
+o.formatlistpat = [[^\s*[[({]\?\([0-9]\+\|[a-zA-Z]\+\)[\]:.)}]\?\s\+\|^\s*[-–+o*•]\s\+]]
 -- search
 o.grepprg = "rg --vimgrep" -- use ripgrep in vim
 o.ignorecase = true        -- case insensitive search

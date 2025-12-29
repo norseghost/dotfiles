@@ -54,7 +54,7 @@ return {
                 end, { expr = true, silent = true, buffer = buffer_nr, desc = "Go to previous hunk" })
 
                 -- git actions
-                vim.keymap.set("n", "<leader>gp", gitsigns.preview_hunk, {
+                vim.keymap.set("n", "<leader>gT", gitsigns.preview_hunk, {
                     silent = true, buffer = buffer_nr, desc = "Preview hunk"
                 })
                 vim.keymap.set("n", "<leader>gt", gitsigns.toggle_deleted, {
@@ -150,6 +150,8 @@ return {
         keys = {
             { "<leader>gg", "<cmd>Neogit <cr>",       "Neogit Status" },
             { "<leader>gc", "<cmd>Neogit commit<cr>", "Neogit Commit" },
+            { "<leader>gp", "<cmd>Neogit pull<cr>", "Neogit Commit" },
+            { "<leader>gP", "<cmd>Neogit push<cr>", "Neogit Commit" },
 
         }
     }

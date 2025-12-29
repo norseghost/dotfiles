@@ -1,73 +1,67 @@
 return {
     {
-        "tadmccorkle/markdown.nvim",
-        branch = "master",
-        require = { "godlygeek/tabular" },
-        dependencies = {
-            "vim-pandoc/vim-pandoc-syntax",
-            "vim-pandoc/vim-pandoc",
-            {
-                "ellisonleao/glow.nvim", -- inline preview of rendered markdown
-                keys = { "<leader>mp", "<cmd>Glow<cr>", desc = "Markdown Preview" },
-            }
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ft = { "markdown", "rmd", "pandoc" },
+        opts = {
+            -- Automatically handles frontmatter (YAML/TOML/JSON) visually
+            code = {
+                sign = true,
+                width = "block",
+                right_pad = 1,
+            },
+            heading = {
+                sign = true,
+                icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+            },
+            completions = { lsp = { enabled = true } },
         },
-        ft = {
-            "markdown",
-            "md",
-            "rmd",
-            "Rmd",
-            "pandoc"
-        },
+    },
+
+    {
+        "ellisonleao/glow.nvim",
+        cmd = "Glow",
+        config = true,
+        keys = { { "<leader>mp", "<cmd>Glow<cr>", desc = "Markdown Preview" } },
+    },
+
+    {
+        "jakewvincent/mkdnflow.nvim",
+        ft = { "markdown", "md" },
         config = function()
-            vim.cmd([[
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-        ]]
-            )
+            local bib_file = "_bibliography/references.bib"
+            -- Only enable bib module if the file actually exists
+            local has_bib = vim.fn.filereadable(vim.fn.getcwd() .. "/" .. bib_file) == 1
+
+            require("mkdnflow").setup({
+                modules = {
+                    bib = has_bib,
+                    yaml = false,
+                    lists = false
+                },
+                perspective = {
+                    priority = "root",
+                    root_tell = ".git",
+                },
+                bib = {
+                    default_path = bib_file,
+                    find_in_root = true
+                },
+            })
         end
     },
-    -- {
-    --     "jakewvincent/mkdnflow.nvim",
-    --     config = function()
-    --         require("mkdnflow").setup({
-    --             modules = {
-    --                 yaml = true,
-    --                 cmp = true,
-    --                 bib = false,
-    --             },
-    --             perspective = {
-    --                 priority = "root",
-    --                 fallback = "current",
-    --                 root_tell = ".git",
-    --                 nvim_wd_heel = false,
-    --                 update = true
-    --             },
-    --             bib = {
-    --                 default_path = "_bibliography/references.bib",
-    --                 find_in_root = true
-    --             },
-    --             yaml = {
-    --                 bib = { override = true }
-    --             },
-    --             mappings = {
-    --                 MkdnFoldSection = { "n", "<leader>tf" },
-    --                 MkdnUnfoldSection = { "n", "<leader>tF" }
-    --             }
-    --         })
-    --     end,
-    --     ft = {
-    --         "markdown", "rmd", "md"
-    --     }
-    -- },
-    -- {
-    --     "jubnzv/mdeval.nvim",
-    --     config = function()
-    --         require("mdeval").setup(
-    --         )
-    --     end,
-    --     keys = {
-    --         { "<leader>mc", "<cmd>lua require 'mdeval'.eval_code_block()<CR>", desc = "Evaluate Code" },
-    --     },
-    -- }
+    {
+        "tadmccorkle/markdown.nvim",
+        ft = "markdown", -- or 'event = "VeryLazy"'
+        opts = {
+            on_attach = function(bufnr)
+                local map = vim.keymap.set
+                local opts = { buffer = bufnr }
+                map({ 'n', 'i' }, '<C-CR>', '<Cmd>MDListItemBelow<CR>', opts)
+                map({ 'n', 'i' }, '<M-C-CR>', '<Cmd>MDListItemAbove<CR>', opts)
+                map('n', '<M-c>', '<Cmd>MDTaskToggle<CR>', opts)
+                map('x', '<M-c>', ':MDTaskToggle<CR>', opts)
+            end,
+        },
+    }
 }
