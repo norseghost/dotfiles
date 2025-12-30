@@ -13,9 +13,9 @@ local sessions = {
         branch_separator = "_",
     },
     keys = {
-        { "<leader>tS", "<cmd>SessionToggle<cr>",       desc = "Toggle Sessions" },
-        { "<leader>ss", "<cmd>Telescope persisted<cr>", desc = "Search Sessions" }
-    }
+        { "<leader>tS", "<cmd>SessionToggle<cr>", desc = "Toggle Sessions" },
+        { "<leader>ss", "<cmd>SessionSelect<cr>", desc = "Search Sessions" }
+    },
 }
 
 return sessions
