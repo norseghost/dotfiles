@@ -4,6 +4,7 @@ local writing = {
         opts = {
             strategy = "neovim"
         },
+
         keys = {
             { "<leader>Sb", ":Static build<cr>" },
             { "<leader>Ss", ":Static serve<cr>" },

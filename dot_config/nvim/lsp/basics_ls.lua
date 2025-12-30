@@ -18,8 +18,8 @@ return {
             enable = true,
         },
         snippet = { -- TODO: find a nice snippet collection
-            enable = false,
-            sources = {},
+            enable = true,
+            sources = { "~/.config/nvim/snippets" },
         },
     },
 }
