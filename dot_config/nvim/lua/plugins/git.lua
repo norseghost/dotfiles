@@ -131,8 +131,9 @@ return {
             -- Only one of these is needed, not both.
             "nvim-telescope/telescope.nvim", -- optional
         },
-        graph_style = "unicode",
         opts = {
+            graph_style = "unicode",
+            kind = "floating",
             commit_editor = {
                 kind = "floating",
                 show_staged_diff = true,
