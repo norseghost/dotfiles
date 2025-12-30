@@ -1,7 +1,8 @@
 local sessions = {
     "olimorris/persisted.nvim",
-    event = "VeryLazy",
+    event = "BufReadPre",
     opts = {
+        autostart = true,
         autoload = true,
         on_autoload_no_session = function()
             vim.notify("No existing session to load.")
