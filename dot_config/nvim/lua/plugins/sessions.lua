@@ -1,8 +1,7 @@
-local sessions = {
+return {
     "olimorris/persisted.nvim",
     event = "BufReadPre",
     opts = {
-        autostart = true,
         autoload = true,
         on_autoload_no_session = function()
             vim.notify("No existing session to load.")
@@ -12,10 +11,9 @@ local sessions = {
         use_git_branch = true,
         branch_separator = "_",
     },
-    keys = {
-        { "<leader>tS", "<cmd>SessionToggle<cr>", desc = "Toggle Sessions" },
-        { "<leader>ss", "<cmd>SessionSelect<cr>", desc = "Search Sessions" }
-    },
+    init = function()
+        require("telescope").load_extension("persisted")
+        vim.keymap.set("n", "<leader>ss", "<cmd>Telescope persisted<cr>", { desc = "Search Sessions" })
+        vim.keymap.set("n", "<leader>tS", "<cmd>SessionToggle<cr>", { desc = "Toggle Sessions" })
+    end
 }
-
-return sessions
