@@ -20,7 +20,10 @@ local keymap = vim.keymap.set
 ---- toggle options
 vim.keymap.set("n", "<leader>ts", function() util.toggle("spell") end, { desc = "Toggle Spelling" })
 vim.keymap.set("n", "<leader>tw", function() util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-vim.keymap.set("n", "<leader>tn", function() util.toggle("relativenumber") util.toggle("number") end,
+vim.keymap.set("n", "<leader>tn", function()
+        util.toggle("relativenumber")
+        util.toggle("number")
+    end,
     { desc = "Toggle Line Numbers" })
 vim.keymap.set("n", "<leader>td", util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
@@ -63,6 +66,7 @@ keymap("n", "Q", "", opts)
 
 keymap("n", "!", ":!", opts)
 
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics for current line" })
 vim.keymap.set("n", "<leader>w", "<cmd>w!<CR>", util.add_desc(opts, "Save"))
 vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>", util.add_desc(opts, "Close Window"))
 vim.keymap.set("n", "<leader>Q", "<cmd>wqa!<CR>", util.add_desc(opts, "Exit NeoVim"))
