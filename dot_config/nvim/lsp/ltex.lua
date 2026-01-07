@@ -1,12 +1,20 @@
-local da_words = {}
-for word in io.open(vim.fn.stdpath("config") .. "/spell/da.utf-8.add", "r"):lines() do
-    table.insert(da_words, word)
+local function read_words(path)
+  local words = {}
+  local f = io.open(path, "r")
+  if not f then
+    return words
+  end
+  for line in f:lines() do
+    table.insert(words, line)
+  end
+  f:close()
+  return words
 end
 
-local en_words = {}
-for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):lines() do
-    table.insert(en_words, word)
-end
+local config_dir = vim.fn.stdpath("config")
+
+local da_words = read_words(config_dir .. "/spell/da.utf-8.add")
+local en_words = read_words(config_dir .. "/spell/en.utf-8.add")
 
 return {
     filetypes = { "markdown", "text", "tex", "org" },

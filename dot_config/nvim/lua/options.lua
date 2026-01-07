@@ -72,7 +72,7 @@ o.virtualedit = {
     "block"        -- allow selection outside characters in visual block mode
 }
 -- spelling
-o.spell = true  -- enable spellcheck
+o.spell = false  -- enable spellcheck
 o.spelllang = { -- which languages to spellcheck
     "en",
     --[[ "da" ]]
@@ -145,4 +145,3 @@ if vim.fn.executable("rg") == 1 then
     o.grepprg = "rg --vimgrep -H --no-heading --column --smart-case -P"
     o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end
-
