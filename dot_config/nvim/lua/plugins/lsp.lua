@@ -3,13 +3,12 @@ local lsps = {
     "bashls",
     "basics_ls",
     "clangd",
-    "docker_language_service",
     "marksman",
     "pylsp",
     "yamlls",
     "ltex",
-    "harper_ls",
-    "vale_ls"
+    -- "harper_ls",
+    -- "vale_ls"
 }
 
 return {

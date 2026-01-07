@@ -1,28 +1,11 @@
 --- diagnostips
 vim.diagnostic.config({
-    virtual_text = true,
-    current_line = true,
-    virtual_lines = {
-        current_line = true,
+    virtual_text = {
+        spacing = 4,
+        prefix = "●",
     },
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN] = " ",
-            [vim.diagnostic.severity.INFO] = " ",
-            [vim.diagnostic.severity.HINT] = "󰠠 ",
-        },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = "Error",
-            [vim.diagnostic.severity.WARN] = "Warn",
-            [vim.diagnostic.severity.INFO] = "Info",
-            [vim.diagnostic.severity.HINT] = "Hint",
-        },
-        numhl = {
-            [vim.diagnostic.severity.ERROR] = "Error",
-            [vim.diagnostic.severity.WARN] = "Warn",
-            [vim.diagnostic.severity.INFO] = "Info",
-            [vim.diagnostic.severity.HINT] = "Hint",
-        },
-    },
-});
+    signs = true,             -- simple gutter signs
+    update_in_insert = false, -- do NOT update while typing
+    underline = true,         -- underline errors/warnings
+    severity_sort = true,
+})

@@ -34,7 +34,13 @@ local lsp_autoformat = function(client, bufnr)
         })
     end
 end
-
+local function buffer_lang(bufnr)
+    local lines = vim.api.nvim_buf_get_lines(bufnr, 0, 10, false)
+    for _, l in ipairs(lines) do
+        local lang = l:match("^lang:%s*(%S+)")
+        if lang then return lang end
+    end
+end
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
     callback = function(ev)
@@ -52,6 +58,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.completion.enable(
             true, client.id, ev.buf, { autotrigger = true }
         )
+        if client.name == "harper_ls" or client.name == "vale_ls" then
+            local lang = buffer_lang(ev.buf)
+            if lang == "da-DK" then
+                vim.schedule(function()
+                    vim.lsp.stop_client(client.id)
+                end)
+            end
+        end
     end,
 })
 
@@ -65,13 +79,3 @@ if not is_windows then
         "ansible_language_server"
     )
 end
-vim.lsp.enable({
-    "lua_ls",
-    "bashls",
-    "basics_ls",
-    "clangd",
-    "docker_compose_language_service",
-    "marksman",
-    "openscad_lsp",
-    "pylsp",
-})
