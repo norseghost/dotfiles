@@ -1,11 +1,12 @@
 return {
     filetypes = { "markdown", "text" },
     settings = {
-        harper = {
+        ["harper-ls"] = {
             linters = {
                 SpellCheck = false,
+                QuiteQuiet = false,
             },
-            dialect = "american",
+            dialect = "American",
         },
     },
 }
