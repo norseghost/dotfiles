@@ -17,7 +17,14 @@ if (-not (Test-Path $zoxideCache)) {
         zoxide init powershell > $zoxideCache
     }
 }
+# rbenv for Windows
+$env:RBENV_ROOT = "C:\Ruby-on-Windows"
 
+# Not easy to download on Github?
+# Use a custom mirror!
+# $env:RBENV_USE_MIRROR = "https://abc.com/abc-<version>"
+
+& "$env:RBENV_ROOT\rbenv\bin\rbenv.ps1" init
 if (Test-Path $zoxideCache) { . $zoxideCache }
 function prompt {
     $esc = "`e"
