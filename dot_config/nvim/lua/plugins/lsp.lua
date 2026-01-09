@@ -6,9 +6,8 @@ local lsps = {
     "marksman",
     "pylsp",
     "yamlls",
-    "ltex",
-    -- "harper_ls",
-    -- "vale_ls"
+    "codebook",
+    "harper_ls"
 }
 
 return {
