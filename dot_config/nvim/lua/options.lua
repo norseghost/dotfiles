@@ -72,13 +72,19 @@ o.virtualedit = {
     "block"        -- allow selection outside characters in visual block mode
 }
 -- spelling
-o.spell = false  -- enable spellcheck
+o.spell = true  -- enable spellcheck
 o.spelllang = { -- which languages to spellcheck
     "en",
-    --[[ "da" ]]
+    "da"
 }
-o.spellcapcheck = "" -- don't highlight uncapitalised first word
-o.spelloptions = "noplainbuffer"
+o.spellcapcheck =
+"" -- don't highlight uncapitalised first wordlocal spell_dir = vim.fn.stdpath("config"):gsub("\\", "/") .. "/spell"
+local spell_dir = vim.fn.stdpath("config"):gsub("\\", "/") .. "/spell"
+-- The first is for the first language in spelllang (da), the second for (en)
+vim.opt.spellfile = {
+    spell_dir .. "/en.utf-8.add",
+    spell_dir .. "/da.utf-8.add",
+}
 -- folds
 o.foldenable = true   -- allow code to be folded
 o.foldlevelstart = 99 -- start unfolded
@@ -92,11 +98,11 @@ o.expandtab = true
 o.autoindent = true -- copy indent from previous line
 o.breakindent = true
 o.formatoptions = {
-    c = true,       -- auto wrap comments using textwidth
-    r = true,       -- <cr> autoinserts current comment leader in insert mode
-    o = true,       -- <o>/<O> autoinserts current comment leader in normal mode
-    q = true,       -- format comments with <gq>
-    j = true,       -- remove comment leader when joining lines
+    c = true, -- auto wrap comments using textwidth
+    r = true, -- <cr> autoinserts current comment leader in insert mode
+    o = true, -- <o>/<O> autoinserts current comment leader in normal mode
+    q = true, -- format comments with <gq>
+    j = true, -- remove comment leader when joining lines
 }
 o.textwidth = 79
 -- lists
