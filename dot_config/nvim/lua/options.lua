@@ -71,6 +71,7 @@ o.confirm = true   -- confirm saving changes instead of throwing an error
 o.virtualedit = {
     "block"        -- allow selection outside characters in visual block mode
 }
+o.fileformat = "unix"
 -- spelling
 o.spell = true  -- enable spellcheck
 o.spelllang = { -- which languages to spellcheck
