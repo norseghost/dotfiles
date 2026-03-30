@@ -7,7 +7,6 @@ if (Get-Command Set-PsFzfOption -ErrorAction SilentlyContinue) {
 }
 $docs = [Environment]::GetFolderPath('MyDocuments')
 $zoxideCache = Join-Path $docs "PowerShell\.zoxide.ps1"
-
 if (-not (Test-Path $zoxideCache)) {
     if (Get-Command zoxide -ErrorAction SilentlyContinue) {
 # Ensure directory exists before writing
@@ -17,9 +16,11 @@ if (-not (Test-Path $zoxideCache)) {
         zoxide init powershell > $zoxideCache
     }
 }
+. $zoxideCache
 # rbenv for Windows
 $env:RBENV_ROOT = "C:\Ruby-on-Windows"
 
+$Env:OCI_CLI_SUPPRESS_FILE_PERMISSIONS_WARNING="True"
 # Not easy to download on Github?
 # Use a custom mirror!
 # $env:RBENV_USE_MIRROR = "https://abc.com/abc-<version>"
@@ -36,7 +37,7 @@ function prompt {
     # 1. Fast Path calculation
     $CurrentPath = $ExecutionContext.SessionState.Path.CurrentLocation.Path
     $pathComponents = $CurrentPath.Split([System.IO.Path]::DirectorySeparatorChar)
-    
+
     if ($pathComponents.Count -le 3) {
         $DisplayPath = $CurrentPath
     } else {
@@ -50,11 +51,11 @@ function prompt {
         $branch = git rev-parse --abbrev-ref HEAD 2>$null
         if ($branch) {
             $GitSegment = " [$Yellow$branch$Reset]"
-            
+
             # Get status short-form: M = modified, A = added, D = deleted
             # --cached includes staged changes; remove it if you only want unstaged
             $stats = git diff-index --name-status HEAD 2>$null
-            
+
             if ($stats) {
                 # Efficiency: Count occurrences in the string without regex overhead
                 $mCount = ($stats | Select-String -Pattern "^M" -AllMatches).Matches.Count
@@ -72,4 +73,3 @@ function prompt {
     Write-Host "$DisplayPath$GitSegment" -NoNewline
     Write-Output "`n$Green>$Reset "
 }
-

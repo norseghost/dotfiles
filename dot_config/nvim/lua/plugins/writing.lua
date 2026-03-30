@@ -4,6 +4,7 @@ local writing = {
         opts = {
             strategy = "neovim"
         },
+        ft = { "markdown" },
 
         keys = {
             { "<leader>Sb", ":Static build<cr>" },
