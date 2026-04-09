@@ -49,7 +49,7 @@ o.wildmode = "full" -- command <tab> completion, list matches, then longest comm
 o.wildignorecase = true -- case insensitive command mode completion
 -- gutter
 o.number = true -- show line numbers
-o.relativenumber = true -- line numbers count from current line
+o.relativenumber = false -- line numbers count from current line
 o.signcolumn = "auto:5" -- show signcolumn in number column
 -- whitespace
 o.list = true -- show whitespace
