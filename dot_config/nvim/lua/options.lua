@@ -1,4 +1,7 @@
+-- enable new ui2
+require("vim._core.ui2").enable()
 --- GENERAL
+
 local o = vim.opt
 
 o.hidden = true    -- don't unload abandoned buffers
@@ -105,7 +108,7 @@ o.formatoptions = {
     q = true, -- format comments with <gq>
     j = true, -- remove comment leader when joining lines
 }
-o.textwidth = 79
+o.textwidth = 75
 -- lists
 -- 1. ^\s* : Start of line + optional whitespace
 -- 2. [[({]?         : Optional opening punctuation
@@ -122,6 +125,7 @@ o.smartcase = true         -- unless there is uppercase
 o.incsearch = true         -- show matches in realtime
 o.hlsearch = true          -- highlight search results
 -- completion
+o.autocomplete = true
 o.completeopt = {
     "menu",    -- show completion menu
     "menuone", -- even if there is only one match
