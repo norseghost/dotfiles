@@ -20,17 +20,16 @@ local keymap = vim.keymap.set
 ---- toggle options
 vim.keymap.set("n", "<leader>ts", function() util.toggle("spell") end, { desc = "Toggle Spelling" })
 vim.keymap.set("n", "<leader>tw", function() util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-vim.keymap.set("n", "<leader>tn", function()
-        util.toggle("relativenumber")
-        util.toggle("number")
-    end,
-    { desc = "Toggle Line Numbers" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Open New Tab" })
+vim.keymap.set("n", "<leader>tN", "<cmd>tabnew %<cr> ", { desc = "Open Buffer in New Tab" })
+vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+vim.keymap.set("n", "<leader>tC", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
 vim.keymap.set("n", "<leader>td", util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-vim.keymap.set("n", "<leader>tc", function() util.toggle("conceallevel", false, { 0, conceallevel }) end,
+vim.keymap.set("n", "<leader>tv", function() util.toggle("conceallevel", false, { 0, conceallevel }) end,
     { desc = "Toggle Conceal" })
 -- TODO: write function to toggle these
-keymap("n", "<leader>te", "<cmd>setlocal spell! spelllang-=en spelllang+=da<cr>",
+keymap("n", "<leader>tD", "<cmd>setlocal spell! spelllang-=en spelllang+=da<cr>",
     util.add_desc(opts, "Set Danish Spell Check"))
 keymap("n", "<leader>tE", "<cmd>setlocal spell!  spelllang-=da spelllang+=en<cr>",
     util.add_desc(opts, "Set English Spell Check"))
