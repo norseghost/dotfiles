@@ -22,7 +22,6 @@ vim.keymap.set("n", "<leader>u", function()
     undotree.open({
         title = function(bufnr)
             local name = vim.fn.bufname(bufnr)
-            local ut_buf = find_undotree_buf()
             return " UndoTree: " .. (name ~= "" and vim.fn.fnamemodify(name, ":t") or "[No Name]") .. " "
         end,
         command = "botright vertical 30vnew",
