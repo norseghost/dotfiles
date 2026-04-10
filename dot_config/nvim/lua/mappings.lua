@@ -16,8 +16,18 @@ local keymap = vim.keymap.set
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
-
----- toggle options
+vim.cmd("packadd! nvim.undotree")
+local undotree = require("undotree")
+vim.keymap.set("n", "<leader>u", function()
+    undotree.open({
+        title = function(bufnr)
+            local name = vim.fn.bufname(bufnr)
+            local ut_buf = find_undotree_buf()
+            return " UndoTree: " .. (name ~= "" and vim.fn.fnamemodify(name, ":t") or "[No Name]") .. " "
+        end,
+        command = "botright vertical 30vnew",
+    })
+end, { desc = "Open Undo Tree" })
 vim.keymap.set("n", "<leader>ts", function() util.toggle("spell") end, { desc = "Toggle Spelling" })
 vim.keymap.set("n", "<leader>tw", function() util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Open New Tab" })
