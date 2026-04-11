@@ -1,5 +1,10 @@
 autoload -Uz add-zsh-hook
 zsh_cache_dir="$XDG_CACHE_HOME/zsh"
+
+HISTFILE=~$zsh_cache_dir/histfile
+HISTSIZE=10000
+SAVEHIST=10000
+
 mkdir -p $zsh_cache_dir
 # completions
 export ZSH_COMPDUMP="$zsh_cache_dir/zcompdump-$HOST-$ZSH_VERSION"
