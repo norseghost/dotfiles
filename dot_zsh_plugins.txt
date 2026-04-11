@@ -2,7 +2,6 @@ willghatch/zsh-saneopt
 djui/alias-tips
 Tarrasch/zsh-command-not-found
 zsh-users/zsh-completions
-joepvd/zsh-hints
 zpm-zsh/ssh
 le0me55i/zsh-systemd
 peterhurford/git-aliases.zsh

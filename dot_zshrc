@@ -23,7 +23,7 @@ zstyle ':completion::complete:*' gain-privileges 1
 if [ ! -d ${ZDOTDIR:-$HOME}/.antidote ]; then
     git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
 fi
-source ${ZDOTDIR:-$HOME}/.antidote/antidote.sh && antidote load
+source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh && antidote load
 # prompt
 eval "$(starship init zsh)"
 # zoxide
