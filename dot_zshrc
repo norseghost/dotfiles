@@ -1,0 +1,45 @@
+autoload -Uz add-zsh-hook
+
+# completions
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$HOST-$ZSH_VERSION"
+mkdir -p "$(dirname "$ZSH_COMPDUMP")"
+autoload -Uz compinit
+compinit -d "$ZSH_COMPDUMP"
+# Case-insensitive tab completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 
+# Visual menu for selecting completions
+zstyle ':completion:*' menu select
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+zstyle ':completion::complete:*' gain-privileges 1
+
+# plugins
+[ -f ~/.cache/zsh/plugins.sh ] && source ~/.cache/zsh/plugins.sh
+# prompt
+eval "$(starship init zsh)"
+# zoxide
+if command -v zoxide >/dev/null; then
+    eval "$(zoxide init zsh)"
+    alias cd="z" # Optional: let zoxide take over 'cd'
+fi
+# FZF - fuzzy search
+if command -v fzf >/dev/null; then 
+    source  <(fzf --zsh)
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow'
+    alias f='fzf --preview "bat --color \"always\" {}"'
+fi
+# eza / better ls
+alias du="ncdu --color dark -rr -x --exclude .git"
+if command -v eza >/dev/null; then
+    alias ls="eza --group-directories-first"
+else
+    alias ls='ls -hF --color=tty --group-directories-first'
+fi
+alias ll="ls -l"
+alias la='ls -a'
+alias lla='ls -al'
+alias tree='ls --tree'
+command -v bat > dev/null && alias cat="bat --style='plain'"
+command -v tldr >/dev/null && alias help='tldr'
+command -v prettyping >/dev/null && alias ping='prettyping'
+command -v ncdu >/dev/null && alias du="ncdu --color dark -rr -x --exclude .git"
