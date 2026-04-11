@@ -1,14 +1,14 @@
 autoload -Uz add-zsh-hook
+: ${XDG_CACHE_HOME:=$HOME/.cache}
 zsh_cache_dir="$XDG_CACHE_HOME/zsh"
 
-HISTFILE=~$zsh_cache_dir/histfile
+HISTFILE="$zsh_cache_dir/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 
 mkdir -p $zsh_cache_dir
 # completions
 export ZSH_COMPDUMP="$zsh_cache_dir/zcompdump-$HOST-$ZSH_VERSION"
-mkdir -p "$(dirname "$ZSH_COMPDUMP")"
 autoload -Uz compinit
 compinit -d "$ZSH_COMPDUMP"
 # Case-insensitive tab completion
@@ -20,7 +20,10 @@ zstyle ':completion:*' cache-path "$zsh_cache_dir/zcompcache"
 zstyle ':completion::complete:*' gain-privileges 1
 
 # plugins
-[ -f $zsh_cache_dir/plugins.sh ] && source $zsh_cache_dir/plugins.sh
+if [ ! -d ${ZDOTDIR:-$HOME}/.antidote ]; then
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+fi
+source ${ZDOTDIR:-$HOME}/.antidote/antidote.sh && antidote load
 # prompt
 eval "$(starship init zsh)"
 # zoxide
