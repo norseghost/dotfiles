@@ -1,0 +1,6 @@
+README.md
+
+{{- if ne .chezmoi.os "windows" }}
+readonly_WinDocs # powershell config
+{{- end }}
+
