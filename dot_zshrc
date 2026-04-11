@@ -7,7 +7,7 @@ mkdir -p "$(dirname "$ZSH_COMPDUMP")"
 autoload -Uz compinit
 compinit -d "$ZSH_COMPDUMP"
 # Case-insensitive tab completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # Visual menu for selecting completions
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
@@ -24,7 +24,7 @@ if command -v zoxide >/dev/null; then
     alias cd="z" # Optional: let zoxide take over 'cd'
 fi
 # FZF - fuzzy search
-if command -v fzf >/dev/null; then 
+if command -v fzf >/dev/null; then
     source  <(fzf --zsh)
     export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --follow'
     alias f='fzf --preview "bat --color \"always\" {}"'
@@ -44,3 +44,9 @@ command -v bat > /dev/null && alias cat="bat --style='plain'"
 command -v tldr >/dev/null && alias help='tldr'
 command -v prettyping >/dev/null && alias ping='prettyping'
 command -v ncdu >/dev/null && alias du="ncdu --color dark -rr -x --exclude .git"
+if command -v nvim >/dev/null; then
+    export EDITOR='nvim'
+    export VISUAL='nvim'
+    alias v='nvim'
+    alias vim='nvim'
+fi
