@@ -1,7 +1,8 @@
 autoload -Uz add-zsh-hook
-
+zsh_cache_dir="$XDG_CACHE_HOME/zsh"
+mkdir -p $zsh_cache_dir
 # completions
-export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$HOST-$ZSH_VERSION"
+export ZSH_COMPDUMP="$zsh_cache_dir/zcompdump-$HOST-$ZSH_VERSION"
 mkdir -p "$(dirname "$ZSH_COMPDUMP")"
 autoload -Uz compinit
 compinit -d "$ZSH_COMPDUMP"
@@ -10,11 +11,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # Visual menu for selecting completions
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+zstyle ':completion:*' cache-path "$zsh_cache_dir/zcompcache"
 zstyle ':completion::complete:*' gain-privileges 1
 
 # plugins
-[ -f ~/.cache/zsh/plugins.sh ] && source ~/.cache/zsh/plugins.sh
+[ -f $zsh_cache_dir/plugins.sh ] && source $zsh_cache_dir/plugins.sh
 # prompt
 eval "$(starship init zsh)"
 # zoxide
@@ -39,7 +40,7 @@ alias ll="ls -l"
 alias la='ls -a'
 alias lla='ls -al'
 alias tree='ls --tree'
-command -v bat > dev/null && alias cat="bat --style='plain'"
+command -v bat > /dev/null && alias cat="bat --style='plain'"
 command -v tldr >/dev/null && alias help='tldr'
 command -v prettyping >/dev/null && alias ping='prettyping'
 command -v ncdu >/dev/null && alias du="ncdu --color dark -rr -x --exclude .git"
