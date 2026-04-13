@@ -1,0 +1,10 @@
+[user]
+	email = martin.andreas.andersen@gmail.com
+	name = Martin Andreas Andersen
+[init]
+	defaultbranch = main
+[core]
+	autocrlf = input
+	eol = lf
+[push]
+	autoSetupRemote = true
