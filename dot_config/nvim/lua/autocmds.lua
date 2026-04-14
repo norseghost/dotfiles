@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.hl.on_yank({ higroup = "IncSearch", timeout = 200 })
     end
 })
--- show cursor line only in active window
+-- Show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
     group = ui,
     callback = function()
@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
 })
 
--- close some filetypes with <q>
+-- Close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
     group = ui,
     pattern = {
@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end,
 })
--- resize splits if window got resized
+-- Resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     group = ui,
     callback = function()
@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
     end,
 })
 
--- go to last location when opening a buffer
+-- Go to last location when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
     group = ui,
     callback = function()
