@@ -24,7 +24,7 @@ vim.keymap.set("n", "<leader>u", function()
             local name = vim.fn.bufname(bufnr)
             return " UndoTree: " .. (name ~= "" and vim.fn.fnamemodify(name, ":t") or "[No Name]") .. " "
         end,
-        command = "botright vertical 30vnew",
+        command = "30vnew",
     })
 end, { desc = "Open Undo Tree" })
 vim.keymap.set("n", "<leader>ts", function() util.toggle("spell") end, { desc = "Toggle Spelling" })
