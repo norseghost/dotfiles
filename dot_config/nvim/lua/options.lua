@@ -23,7 +23,7 @@ require("vim._core.ui2").enable {
     },
 }
 --- GENERAL
-
+vim.cmd.syntax("on")
 local o = vim.opt
 
 o.hidden = true    -- don't unload abandoned buffers
