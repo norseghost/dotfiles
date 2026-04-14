@@ -3,7 +3,6 @@ vim.loader.enable()
 
 -- require local submodules
 require "options"
-require "filetypes"
 require "autocmds"
 require "mappings"
 require "pluginmanager"
