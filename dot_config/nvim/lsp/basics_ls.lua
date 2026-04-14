@@ -11,7 +11,7 @@ return {
     cmd = { "basics-language-server" },
     settings = {
         buffer = {
-            enable = true,
+            enable = false,
             minCompletionLength = 4,
         },
         path = {

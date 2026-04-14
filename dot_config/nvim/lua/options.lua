@@ -148,12 +148,19 @@ o.incsearch = true         -- show matches in realtime
 o.hlsearch = true          -- highlight search results
 -- completion
 o.autocomplete = true
+o.complete = {
+    "o^9",
+    ".^3",
+    "w^3",
+    "b^3",
+    "kspell^5"
+}
 o.completeopt = {
-    "menu",    -- show completion menu
-    "menuone", -- even if there is only one match
-    "popup",   -- popup window
-    "fuzzy",   -- enable fuzzy search
-    "noselect" -- don't autoselect words
+    "menu",     -- show completion menu
+    "menuone",  -- even if there is only one match
+    "fuzzy",    -- enable fuzzy search
+    "noselect", -- don't autoselect words
+    "noinsert"  -- don't insert text
 }
 -- text wrapping
 o.wrap = false       -- wrap lines by default
