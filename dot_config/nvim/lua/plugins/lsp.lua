@@ -1,7 +1,7 @@
 local lsps = {
     "lua_ls",
     "bashls",
-    -- "basics_ls",
+    "basics_ls",
     "clangd",
     "marksman",
     "pylsp",
