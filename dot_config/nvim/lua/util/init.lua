@@ -151,7 +151,15 @@ local sentence_line_format = function()
     return
 end
 
--- show_in_preview("preview", "markdown", "preview test")
+local uname = vim.loop.os_uname()
+_G.OS = uname.sysname
+
+_G.IS_MAC = OS == "Darwin"
+_G.IS_LINUX = OS == "Linux"
+_G.IS_WINDOWS = OS:find "Windows" and true or false
+_G.IS_WSL = IS_LINUX and uname.release:find "Microsoft" and true or false
+local homedir = vim.loop.os_homedir()
+_G.IS_TERMUX = homedir:find "termux" and true or false
 M.add_desc = add_desc
 M.show_in_preview = show_in_preview
 M.sentence_line_format = sentence_line_format
