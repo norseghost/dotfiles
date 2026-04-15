@@ -149,11 +149,11 @@ o.hlsearch = true          -- highlight search results
 -- completion
 o.autocomplete = true
 o.complete = {
-    "o",
+    "o^9",
     ".^3",
     "w^3",
     "b^3",
-    "kspell^3"
+    "kspell^5"
 }
 o.completeopt = {
     "menu",     -- show completion menu
