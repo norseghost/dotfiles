@@ -17,6 +17,13 @@ end
 
 return {
     {
+        "chaneyzorn/spellwand.nvim",
+        init = function()
+            vim.lsp.enable("spellwand")
+        end,
+    },
+
+    {
         "mason-org/mason-lspconfig.nvim",
         event        = "VeryLazy",
         opts         = {
