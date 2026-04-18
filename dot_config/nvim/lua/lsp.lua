@@ -22,7 +22,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspAttach", { clear = false }),
     callback = function(ev)
         vim.lsp.on_type_formatting.enable()
-        vim.lsp.codelens.enable()
+        vim.keymap.set("n", "grc", function()
+            vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+        end, { desc = "Toggle codelens" })
         vim.lsp.inlay_hint.enable()
         vim.lsp.linked_editing_range.enable()
         local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
