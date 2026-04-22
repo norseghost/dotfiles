@@ -1,6 +1,11 @@
 README.md
 
-{{- if ne .chezmoi.os "windows" }}
-readonly_WinDocs # powershell config
+{{- if eq .chezmoi.os "windows" }}
+# Ignore everything in Documents except the PowerShell profile
+WinDocs/**/*
+!WinDocs/PowerShell/
+!WinDocs/PowerShell/Microsoft.PowerShell_profile.ps1
+{{- else }}
+# Ignore the Windows-specific folder entirely on non-Windows systems
+WinDocs/
 {{- end }}
-
