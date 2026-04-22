@@ -61,6 +61,15 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end,
 })
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        if vim.bo.buftype == "nofile" then
+            vim.opt.autocomplete = false
+            return
+        end
+        vim.opt.autocomplete = true
+    end,
+})
 -- Resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     group = ui,
