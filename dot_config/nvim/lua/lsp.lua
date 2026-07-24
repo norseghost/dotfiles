@@ -29,13 +29,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.linked_editing_range.enable()
         local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
         if client:supports_method("textDocument/completion") then
-            -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-            -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-            -- client.server_capabilities.completionProvider.triggerCharacters = chars
             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
         end
         lsp_autoformat(client, ev.buf)
-        -- lsp_highlight_document(client, ev.buf)
         if client.name == "harper_ls" or client.name == "vale_ls" then
             local lang = buffer_lang(ev.buf)
             if lang == "da-DK" then
