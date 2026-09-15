@@ -1,15 +1,12 @@
 return {
-    { -- color scheme
-        "gbprod/nord.nvim",
+    {
+        IS_TERMUX and "miikanissi/modus-themes.nvim" or "gbprod/nord.nvim",
         lazy = false,
         priority = 1000,
-        init = function()
-            if not IS_TERMUX then
-                vim.cmd.colorscheme("nord")
-            else
-                vim.cmd.colorscheme("wordsmith")
-            end
-        end
+        config = function()
+            local theme = IS_TERMUX and "modus_operandi" or "nord"
+            vim.cmd.colorscheme(theme)
+        end,
     },
-    "kyazdani42/nvim-web-devicons", -- file type icon
+    "kyazdani42/nvim-web-devicons",
 }
