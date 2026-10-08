@@ -1,0 +1,4 @@
+input image full path|param file full path|output image full path|file format|jpeg quality|jpeg subsampling|png bit depth|png compression|tiff bit depth|tiff is float|uncompressed tiff|save output params|force format options|fast export|<end of line>
+/home/norseghost/Pictures/Photography/2026-10-06 gx8 first test/P1220023.RW2|/home/norseghost/.config/RawTherapee/batch/P1220023.RW2_20261007222200_421.pp3||jpg|90|2|8|8|0|1|1|0|0|0|
+/home/norseghost/Pictures/Photography/2026-10-06 gx8 first test/P1220024.RW2|/home/norseghost/.config/RawTherapee/batch/P1220024.RW2_20261007222328_957.pp3||jpg|90|2|8|8|0|1|1|0|0|0|
+/home/norseghost/Pictures/Photography/2026-10-06 gx8 first test/P1220026.RW2|/home/norseghost/.config/RawTherapee/batch/P1220026.RW2_20261007222523_114.pp3||jpg|90|2|8|8|0|1|1|0|1|0|
