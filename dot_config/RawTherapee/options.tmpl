@@ -333,7 +333,11 @@ fastexport_resize_shortedge=900
 fastexport_use_fast_pipeline=1
 
 [Dialogs]
+{{- if eq .chezmoi.os "linux" }}
 LastIccDir=/home/norseghost/.config/RawTherapee/dcp
+{{- else if eq .chezmoi.os "windows" }}
+LastIccDir=/Users/marti/.config/RawTherapee/dcp
+{{- end }}
 LastDarkframeDir=
 LastFlatfieldDir=
 LastCameraProfilesDir=
