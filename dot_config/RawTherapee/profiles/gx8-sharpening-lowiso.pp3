@@ -1,0 +1,27 @@
+[Version]
+AppVersion=5.13
+Version=353
+
+[PostDemosaicSharpening]
+Enabled=true
+Contrast=10
+AutoContrast=true
+AutoRadius=true
+DeconvRadius=0.75
+DeconvRadiusOffset=0
+DeconvIterCheck=true
+Showcap=false
+Noisecaptype=true
+Noisecap=0
+Noisecapafter=0
+DeconvIterations=20
+
+[RAW Bayer]
+Method=amaze
+DualDemosaicAutoContrast=true
+DualDemosaicContrast=20
+
+[RAW X-Trans]
+Method=3-pass (best)
+DualDemosaicAutoContrast=true
+DualDemosaicContrast=20
