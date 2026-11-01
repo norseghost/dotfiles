@@ -16,7 +16,11 @@ LFLens=
 Noisecaptype=true
 
 [Color Management]
-InputProfile=file:/home/norseghost/.config/RawTherapee/dcp/Olympus E-PM1 Adobe Standard.dcp
+{{- if eq .chezmoi.os "linux" }}
+InputProfile=file:/home/norseghost/.config/RawTherapee/Panasonic DMC-GX8 Adobe Standard.dcp
+{{- else if eq .chezmoi.os "windows" }}
+InputProfile=file:C:\\Users\\marti\\AppData\\Local\\RawTherapee\\dcp\\Panasonic DMC-GX8 Adobe Standard.dcp
+{{- end }}
 ToneCurve=true
 ApplyLookTable=true
 ApplyBaselineExposureOffset=true
